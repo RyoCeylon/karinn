@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Special Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fontsの例 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Dancing+Script:wght@600&display=swap" 
+    rel="stylesheet"
+  >
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Raleway', sans-serif; 
+      scroll-behavior: smooth;
+      background: #fefefe;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* ========== 全体レイアウト ========== */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    section {
+      width: 100%;
+      max-width: 900px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* ========== Heroセクション（冒頭） ========== */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+      min-height: 80vh;
+    }
+    .hero h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #333;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease forwards;
+      opacity: 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      animation: fadeInUp 1s 0.5s ease forwards;
+      opacity: 0;
+    }
+    /* 簡単なアニメーション */
+    @keyframes fadeInDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        transform: translateY(-20px);
+      }
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        transform: translateY(20px);
+      }
+    }
+
+    /* ========== Our Storyセクション ========== */
+    .story-section {
+      background: #fff;
+    }
+    .story-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4rem;
+      margin-bottom: 24px;
+      color: #ff7e79;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0 auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    .timeline-item {
+      background: #ffffff;
+      border-left: 5px solid #ff7e79;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #ff7e79;
+    }
+    .timeline-item p {
+      color: #555;
+      margin-bottom: 0;
+    }
+
+    /* ========== スライドインの演出（スクロール時に） ========== */
+    .timeline-item {
+      transform: translateX(-100px);
+      opacity: 0;
+      transition: transform 0.8s, opacity 0.8s;
+    }
+    .timeline-item.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* ========== YouTubeセクション ========== */
+    .video-section {
+      background: #fff7f0;
+    }
+    .video-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .video-container {
+      position: relative;
+      width: 80%;
+      max-width: 560px;
+      padding-bottom: 56.25%;
+      margin: 0 auto;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* ========== Photo Galleryセクション ========== */
+    .gallery-section {
+      background: #f3faff;
+    }
+    .gallery-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .photo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .photo-grid img {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ========== Footerセクション ========== */
+    .footer {
+      background: #333;
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+    .footer p {
+      margin-bottom: 0;
+    }
+
+    /* ========== レスポンシブ対応 ========== */
+    @media screen and (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .timeline-item h3 {
+        font-size: 1rem;
+      }
+      .timeline-item p {
+        font-size: 0.9rem;
+      }
+      .photo-grid img {
+        width: 140px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 16px;
+      }
+      .hero p {
+        font-size: 1rem;
+        width: 80%;
+      }
+      .story-section h2 {
+        font-size: 1.8rem;
+      }
+      .timeline-item {
+        padding: 12px 16px;
+        margin-bottom: 16px;
+      }
+      .timeline-item h3 {
+        font-size: 1rem;
+      }
+      .timeline-item p {
+        font-size: 0.95rem;
+      }
+      .video-section h2,
+      .gallery-section h2 {
+        font-size: 1.4rem;
+      }
+      .photo-grid img {
+        width: 140px; }
+      .footer {
+        padding: 10px;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Our Special Stor</h1>
+    <p>
+      かりんちゃんと歩む毎日を記録<br>
+      このページは大切な瞬間を小さなアルバムにまとめました
+    </p>
+  </section>
+
+  <!-- ========== Our Story: 思い出のタイムライン ========== -->
+  <section class="story-section">
+    <h2>Our Journey</h2>
+    <p style="margin-bottom: 40px; color:#555;">
+      出会いから今日までの奇跡の足跡を少しずつ振り返る<br>  
+      何気ない日々が特別な思い出に変わる瞬間が詰まってます
+    </p>
+    <div class="timeline" id="timeline">
+      <div class="timeline-item">
+        <h3>2024年12月1日 - 出会い</h3>
+        <p>Blueskyで出会った。今に思えば
+            かりんちゃんが投稿に“いいね”をしてくれなかったら
+            この出会い自体なかったかもしれない。
+          </p>
+      </div>
+      <div class="timeline-item">
+        <h3>12月8日 - 初めての電話</h3>
+        <p>そして迎えた初めての電話。お互いに緊張してたけど“声”の相性がすごく良かった。 9分16秒という時間はあっという間だった。</p>
+      </div>
+      <div class="timeline-item">
+        <h3>12月19日 - VRC</h3>
+        <p>僕がVRゴーグルを買って、VRCの世界で“かりんちゃん”に会えた日。
+            アバターを選ぶとき、一緒に選んでくれたのが本当に嬉しかった。
+            画面越しでも、その優しさがしっかり伝わってきた。</p>
+      </div>
+      <div class="timeline-item">
+        <h3>2025年 - これからの未来</h3>
+        <p>明けましておめでとう！！これからもよろしくね！！お互い思いやりながら二人の世界を広げていこ！！</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== YouTube Video ========== -->
+  <section class="video-section">
+    <h2>Our Video</h2>
+    <p style="margin-bottom: 30px;">
+      ここだけでシェアする、ふたりだけの特別映像。  
+    </p>
+    <div class="video-container">
+      <iframe 
+        src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0" 
+        allowfullscreen
+      ></iframe>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <h2>Photo Gallery</h2>
+    <p style="margin-bottom: 30px;">
+    ２人だけの写真
+    </p>
+    <div class="photo-grid">
+      <img src="119.jpeg" >
+      <img src="123.jpeg" >
+      <img src="456.jpeg" >
+      <img src="789.jpeg" >
+      <img src="a.jpeg" >
+      <img src="b.jpeg" >
+      <img src="c.jpeg" >
+      <img src="d.jpeg" >
+      <img src="e.jpeg" >
+      <img src="f.jpeg" >
+      <img src="h.jpeg" >
+      <img src="i.jpeg" >
+      
+    </div>
+  </section>
+
+  
+  <footer class="footer">
+    <p>2025年もよろしくね </p>
+  </footer>
+
+  <!-- スクロール時のアニメーション: タイムライン要素をスライドイン表示 -->
+  <script>
+    const items = document.querySelectorAll(".timeline-item");
+    window.addEventListener("scroll", checkTimeline);
+
+    function checkTimeline() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      items.forEach((item) => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < triggerBottom) {
+          item.classList.add("show");
+        } else {
+          item.classList.remove("show");
+        }
+      });
+    }
+
+    checkTimeline(); // 初期表示での判定
+  </script>
+</body>
+</html>
